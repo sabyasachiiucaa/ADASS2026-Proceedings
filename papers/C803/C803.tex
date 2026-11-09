@@ -1,230 +1,101 @@
-% This is the ADASS_template.tex LaTeX file, 24 Oct 2025.
-% It is based on the ASP general author template file, but modified to reflect the specific
-% requirements of the ADASS proceedings.
-
-% This is the aspauthor.tex LaTeX file
-% Copyright 2021, Astronomical Society of the Pacific Conference Series
-% Revision:  29 November 2021
-
-% To compile, at the command line positioned at this folder, type:
-% pdflatex ADASS_template
-% pdflatex ADASS_template
-% This will create a file called ADASS_template.pdf
+% ADASS 2026 contributed talk C803.
+% Based on the ADASS_template.tex LaTeX file (24 Oct 2025) and the ASP 2021 author template.
 
 \documentclass[11pt,twoside]{article}
 
-% Do NOT use ANY packages other than asp2023. 
+% Do NOT use ANY packages other than asp2023.
 \usepackage{asp2023}
 
 \aspSuppressVolSlug
 \resetcounters
 
-% References must all use BibTeX entries in a .bibfile.
-% References must be cited in the text using \citet{} or \citep{}.
-% Do not use \cite{}.
-% See ManuscriptInstructions.pdf for more details
 \bibliographystyle{asp2021}
 
-% The ``markboth'' line sets up the running heads for the paper.
-% 1 author: "Surname"
-% 2 authors: "Surname1 and Surname2"
-% 3 authors: "Surname1, Surname2, and Surname3"
-% >3 authors: "Surname1 et al."
-% Replace ``Short Title'' with the actual paper title, shortened if necessary.
-% Use mixed case type for the shortened title
-% Ensure shortened title does not cause an overfull hbox LaTeX error
-% See ASPmanual2010.pdf 2.1.4  and ManuscriptInstructions.pdf for more details
-\markboth{Author1, Author2, and Author3}{Short Title}
+\markboth{Chattopadhyay}{FIBRA: Reduction of Fiber-fed IFU Spectra}
 
 \begin{document}
 
-\title{ADASS Author Template with Long Title}
+\title{FIBRA: FIber Bundle Reduction of Astronomical spectra --- an Instrument-agnostic Pipeline for Fiber-fed Integral-field Spectroscopy}
 
-% Note the position of the comma between the author name and the 
-% affiliation number.
-% Authors surnames should come after first names or initials, eg John Smith, or J. Smith.
-% Author names should be separated by commas.
-% The final author should be preceded by "and".
-% Affiliations should not be repeated across multiple \affil commands. If several
-% authors share an affiliation this should be in a single \affil which can then
-% be referenced for several author names. If only one affiliation, no footnotes are needed.
-% See ManuscriptInstructions.pdf and ASP's manual2010.pdf 3.1.4 for more details
-\author{Sample~Author1,$^1$ Sample~Author2,$^2$ and Sample~Author3$^2$}
-\affil{$^1$Institution Name, Institution City, State/Province, Country; \email{AuthorEmail@email.edu}}
-\affil{$^2$Institution Name, Institution City, State/Province, Country}
+\author{Sabyasachi~Chattopadhyay}
+\affil{University of Hawai`i at M\=anoa, Honolulu, HI, USA; \email{sabya@hawaii.edu}}
 
-% This section is for ADS Processing.  There must be one line per author. paperauthor has 9 arguments.
-\paperauthor{Sample~Author1}{Author1Email@email.edu}{ORCID_Or_Blank}{Author1 Institution}{Author1 Department}{City}{State/Province}{Postal Code}{Country}
-\paperauthor{Sample~Author2}{Author2Email@email.edu}{ORCID_Or_Blank}{Author2 Institution}{Author2 Department}{City}{State/Province}{Postal Code}{Country}
-\paperauthor{Sample~Author3}{Author3Email@email.edu}{ORCID_Or_Blank}{Author3 Institution}{Author3 Department}{City}{State/Province}{Postal Code}{Country}
+\paperauthor{Sabyasachi~Chattopadhyay}{sabya@hawaii.edu}{}{University of Hawaii at Manoa}{Space Science and Engineering Initiative}{Honolulu}{HI}{96822}{USA}
 
-% There should be one \aindex line (commented out) for each author. These are used to
-% build up the author index for the Proceedings. The surname must come first, followed by
-% initials. Note the use of ~ before each initial to control spacing.
-% The \author entries (see above) have surname last. These \aindex entries have
-% surname first.
-% The Aindex.py command willl create them for you after you have constructed the \author
-% The first entry should be the first author, for bold-facing the author index page-reference
-
-%\aindex{FistAuthor1,~S.~A.}
-%\aindex{Author2,~S.~B.}
-%\aindex{Author3,~S.}
-
+%\aindex{Chattopadhyay,~S.}
 
 \begin{abstract}
-This is the ADASS 2025 author template file.  This is based on the
-Astronomical Society of the Pacific (ASP) 2021 template, but has been
-modified to reflect the specific ADASS requirements.
+FIBRA is a Python package for the reduction of data from fiber-fed integral field units (IFUs). An instrument enters as data: a detector description, a fiber map and rules for typing frames from their headers. Twelve stages lead from the raw frame to a flux-calibrated data cube. The variance starts at the detector and is propagated through every stage, and each product carries a cumulative key of its inputs and parameters. Every interactive stage has a tuner that writes the same configuration file the batch run reads. Three methods address effects met with the SMI-300 IFU on the Robert Stobie Spectrograph of the Southern African Large Telescope: lamp and sky illuminate the focal plane differently, the sky varies across the field, and neighboring fibers overlap on a dense pseudo-slit. We compare each stage with IRAF on identical input, and the final cube with the MaNGA cube of the same galaxy.
 \end{abstract}
 
-% These lines show examples of subject index entries. At this stage these have to commented
-% out, and need to be on separate lines. Eventually, they will be automatically uncommented
-% and used to generate entries in the Subject Index at the end of the Proceedings volume.
-% Don't leave these in! - replace them with ones relevant to your paper.
-%\ssindex{FOOBAR!conference!ADASS 2019}
-%\ssindex{FOOBAR!organisations!ASP}
+%\ssindex{data!pipelines}
+%\ssindex{algorithm!data reduction}
+%\ssindex{data!provenance}
+%\ssindex{spectroscopy!integral field}
+%\ssindex{instruments!Integral Field Unit (IFU)}
+%\ssindex{techniques!sky subtraction}
+%\ssindex{observatories!ground-based!Southern African Large Telescope (SALT)}
+%\ssindex{packages!IRAF}
 
-% These lines show examples of ASCL index entries. At this stage these have to commented
-% out, and need to be on separate lines. Eventually, they will be automatically uncommented
-% and used to generate entries in the ASCL Index at the end of the Proceedings volume.
-% The ascl.py command will scan your paper on possible code names.
-% Don't leave these in! - replace them with ones relevant to your paper.
-%\ooindex{FOOBAR, ascl:1101.010}
+%\ooindex{IRAF, ascl:9911.002}
+%\ooindex{R3D, ascl:1106.005}
+%\ooindex{p3d, ascl:1205.002}
+%\ooindex{L.A.Cosmic, ascl:1207.005}
+%\ooindex{PyCosmic, ascl:1210.027}
+%\ooindex{Astropy, ascl:1304.002}
 
+\section{Introduction}
 
-\section{The Template}
-To fill in this template, make sure that you read and follow the ASPCS Instructions for Authors and Editors available for download online. Further hints and tips for including graphics, tables, citations, and other formatting helps are available there. With this template, you should have received a copy of the specific ADASS manuscript instructions, and you should also read these.
+Fiber-fed IFUs reformat a field into one or more pseudo-slits at the entrance of a spectrograph. All fiber-fed spectrographs yield similar raw data, and their reduction follows a similar sequence of steps \citep{2006AN....327..850S}. Several packages serve more than one instrument, among them the IRAF \texttt{dohydra} tasks \citep{1993ASPC...52..173T}, R3D \citep{2006AN....327..850S}, p3d \citep{2010A&A...515A..35S} and PyKOALA \citep{2025arXiv250718347C}. Survey instruments carry dedicated pipelines, such as those of MaNGA \citep{2016AJ....152...83L} and SAMI \citep{2015MNRAS.446.1551S}.
 
-\subsection{The Author Checklist}
-The following checklist should be followed when writing a submission to a conference proceedings to be published by the ASP for ADASS. The references are to sections in the ADASS manuscript instructions.\footnote{Most URLs should be in a footnote like this one.  In this case, you can download the online material from \url{http://www.adass.org}.} 
+Fiber IFUs added to general-purpose spectrographs share the slit plane, the calibration unit and the detector of the modes they join. Three effects can follow from this arrangement. First, the calibration lamp can illuminate the focal plane differently from the sky. At the Southern African Large Telescope (SALT), the lamp passes a moving exit-pupil baffle and only approximates the sky illumination \citep{2008SPIE.7014E..6HB}. Second, sky fibers placed away from the object field can see a different sky. On one SMI-300 exposure, two sky bundles on either side of the field reach about 141 and 190 counts at 6000\,\AA. Third, a dense pseudo-slit can bring neighboring traces closer than specified, and a fixed aperture then trades lost light against cross-talk. In the documentation of the packages above we found partial support, or none, for these three effects. FIBRA was written so that a fiber IFU enters as an instrument description rather than as code.
+
+\section{Design}
+
+FIBRA has three layers. Pure stage functions take an input and parameters and return an output. One engine runs these functions, caches their products, records provenance and writes a quality report. Two front ends drive the same engine: a command-line interface and a graphical interface with eight tabs. The stage chain is detector processing, cosmic-ray removal, extraction, flat fielding, wavelength calibration, flexure, sky subtraction, standard-star extraction, flux calibration, telluric correction, cube building and frame combination.
+
+One YAML file holds the configuration, with one block per stage. Its keys are the parameters shown on each stage's page of the interface, and values are type-checked on loading. The instrument description is data. It gives the detector (overscan, gain, read noise), the fiber map (trace order, fiber type, sky position, relative throughput, illumination factor), header rules for frame types, and defaults. SMI-200, SMI-300 and a synthetic test instrument run from such descriptions.
+
+Every product is one of four containers: Image2D, RSS, Cube and Spectrum. Each carries flux, variance, a mask, a header and a history. The variance starts at detector processing as $\sigma^2 = \max(N_e, 0) + R^2$, with $N_e$ the counts in electrons and $R$ the read noise. It is then propagated through the flat field, the sky model, the sensitivity function and the resampling. The cube adds a covariance factor following \citet{2015MNRAS.446.1551S}, a per-spaxel line-spread function and a celestial WCS.
+
+Each product also carries a cumulative SHA-1 key of the input frame, the ordered stage parameters and a code revision. A rerun reuses every product whose key is unchanged. Changing one sky-subtraction parameter therefore reprocesses the chain from sky subtraction onward, and the six earlier products are reused.
+
+Seven stages have tuner windows, from cosmic rays to the sensitivity function. A value accepted in a tuner is written to the configuration file, so the batch run reproduces the interactive session.
+
+\section{Methods}
+
+\textbf{Focal-plane illumination.} The extracted flat of fiber $i$ is multiplied by $\Gamma_i = T_i / L_i$ before its continuum is normalized. Here $T_i$ is the relative sky illumination at the fiber's position on the pseudo-slit, and $L_i$ the relative lamp illumination. For the SMIs, $\Gamma_i$ comes from the ratio of a sky emission line between a long-slit exposure and an SMI exposure. Without a long-slit exposure, a flat and a sky RSS give $L_i$ at the central column and $T_i$ at the brightest airglow line. For SMI-300, $\Gamma_i$ spans 1.00 to 1.14. The relative fiber throughput is kept separate from $\Gamma_i$.
+
+\textbf{Sky subtraction in field zones.} Object and sky fibers are grouped into zones by position in the field, with the sky fibers grouped by a friends-of-friends link on the sky \citep{1982ApJ...257..423H}. Each zone gets a clipped continuum model and a spatial model of every sky line across the slit rows. Each object fiber then takes its sky from the fibers of its own zone. The residuals are compared with the photon noise zone by zone. SMI-300 uses eight zones built from its 34 sky fibers.
+
+\textbf{Variable apertures and aperture loss.} Extraction is a boxcar, optimal \citep{1986PASP...98..609H} or a joint fit over neighboring fibers \citep{2010PASA...27...91S}. Each fiber has its own lower and upper aperture bounds and center offset. These can vary at up to 50 wavelengths, and can be edited with the mouse or as a table. An aperture-loss correction is then applied to science and standard-star spectra alike. It uses normalized pinhole profiles of the fibers, the trace separations, and 98\,\% enclosed energy as the total extent of a fiber's light along the slit. On SMI-300, traces 243 and 244 sit 2\,px closer than specified, and H$\alpha$ from trace 243 enters the aperture of trace 244. Widening the boxcar from 4 to 6\,px raises the kept light of trace 244 from 69 to 88\,\% of its total. It also raises the leak from trace 243 from 25 to 32\,\% of its H$\alpha$.
+
+\textbf{Other stages.} Cosmic rays are rejected on one frame with the Laplacian method of \citet{2001PASP..113.1420V} or across repeated frames. Scattered light is fitted with splines through the slit edges and the gaps left by missing fibers. Arc lines on a reference fiber are identified with the Hough transform and RANSAC approach of \citet{2019arXiv191205883V}, and the solution is then carried to every fiber. On SMI-300, 31 xenon lines give a median residual of 0.34\,\AA\ over the 244 fibers. Sky lines in each science frame measure the flexure shift. The standard star is extracted over the IFU with a \citet{1969A&A.....3..455M} profile whose center follows atmospheric refraction with wavelength. The same star provides the sensitivity function and the telluric correction. The cube is built with a modified-Shepard Gaussian kernel as in \citet{2016AJ....152...83L}, or with drizzle \citep{2002PASP..114..144F}.
+
+\section{Tests}
+
+The tests use the SMI-300 slit-mask IFU, which we built for the Robert Stobie Spectrograph \citep[RSS;][]{2003SPIE.4841.1463B} on SALT \citep{2024SPIE13096E..2RC, 2026arXiv260322698C}. Its fiber map lists 244 fibers: 210 on an object field of about $28\arcsec \times 17\arcsec$ and 34 in two sky bundles about $80\arcsec$ away. We compare each stage with IRAF 2.17 \citep{1993ASPC...52..173T} on an SMI-300 science frame and a standard-star frame. IRAF receives FIBRA's exact input for the stage under test, with matched parameters.
 
 \begin{itemize}
-\checklistitemize
-
-\item References must all use BibTeX entries in a .bib file. No use of \verb"\bibitem"! (Even though some older ASP templates have them.) (See References.)
-\item All references must be cited in the text, usually using \verb"\citet" or \verb"\citep".  Do not use \verb"\cite". (See References.)
-\item No LaTeX warnings. Particularly, no overfull hboxes or unresolved references. (See LaTeX warnings and errors.)
-\item No use of \verb"\usepackage" except for \verb"\usepackage{asp2023}". (See LaTeX packages and commands.)
-\item No use of \verb"\renewcommand" or \verb"\renewenvironment". (See LaTeX packages and commands.)
-\item Arguments to \verb"\citep" etc., should use ADS type references where possible, fall back on <author><year> or something suitably unique if not. (See References.)
-\item References in the text are all generated automatically (using \verb"\citep" etc), not put in explicitly as ordinary text that just looks like a generated reference. (See References.)
-\item Definitely no LaTeX errors. (See LaTeX warnings and errors.)
-\item Paper is the right length. References don't spill over into one more page. (See Length of Paper.)
-\item Paper has an abstract. (See Length of Paper.)
-\item References are to things that actually exist and can be expected to continue to exist. Not papers ``in preparation'' or URLs for blog items. (See References.)
-\item Graphics files have to be .eps encapsulated Postscript format. Yes they do! Sorry, but they do. (See Figures.)
-\item Name all the files properly:- figures are <paper>\_f<n>.eps, eg O1-3\_f1.eps. Paper names use dashes not periods, O1-3.tex not O1.3.tex. Posters now use the same naming convention as oral papers, e.g.\ X3-21. (See File names and Paper IDs.)
-\item Figure captions should make sense if the figure is printed in monochrome - because it will be! (See Figures.)
-\item Figures are legible at the size ADASS Proceedings volumes are printed, which is quite small. (See Figures.)
-\item Copyright forms signed and filled out - don't use electronic signatures. (See Miscellany.)
-\item Author lists follow the correct format: comma separated, with an `and' for the final author. (See Authors and Affiliations.)
-\item The first author of the paper must be the person who presented the paper at the conference. (See Authors and Affiliations.)
-\item No repetition of affiliations - list each organisation once, with multiple e-mail addresses if you really must. (See Authors and Affiliations.)
-\item Running heads should fit in the same horizontal space as the text does, not pushing the page numbers over to the right. (See LaTeX warnings and errors.)
-\item Run through a spelling checker. (I know that can be tricky with LaTeX.) (See Content and Typesetting.)
-\item Proofread, or have the text proofread, to check for proper English usage. In particular, note that ``allows to'' is not conventional English, and English uses articles (`a',`an',`the') in places where other languages, particularly Eastern European languages, don't have them. (See Content and Typesetting.)
+\item Extraction (\texttt{apall}): the traces agree to 0.04\,px rms. The flat fluxes differ by $+0.065$\,\% through partial-pixel weighting at the aperture edges. The arc and standard spectra agree within $0.1\sigma$.
+\item Flat field (the \texttt{msresp1d} response rebuilt with \texttt{sfit} and \texttt{imarith}): the responses agree within $\pm 0.03$\,\%, and the flat-fielded science spectra within $3\times10^{-3}\sigma$.
+\item Wavelength (\texttt{autoidentify}, \texttt{reidentify}, \texttt{dispcor}, 31 lines): the solutions agree to 0.18\,\AA\ rms. The arc-fit rms is 0.42\,\AA\ for FIBRA and 0.50\,\AA\ for IRAF.
+\item Sky (\texttt{skysub} with one sky, against FIBRA with one zone): the residual scatter at sky lines agrees within $0.02\sigma$ ($0.58\sigma$ and $0.60\sigma$).
+\item Flux (\texttt{standard}, \texttt{sensfunc}, \texttt{calibrate}): the IRAF result is 1.3\,\% higher in the median, with a $\pm 6$\,\% ripple from its order-17 fit.
+\item Telluric (\texttt{telluric}, same settings): the corrected spectra agree to $3\times10^{-7}$.
 \end{itemize}
 
-\section{Compiling}
-It is highly recommended that all figures be non-`eps' format, i.e., `png' or `jpg.'  For this case, compiling this article is done simply by using the command \texttt{pdflatex} at least twice on the command line from inside the same folder as the article LaTeX `.tex' file.  If there are references to `eps' image files, pdfLaTeX will not work, and the images should be converted to a non-`eps' type of image file format.
+We built a cube of the MaNGA galaxy 12510-9102 from three dithered SMI-300 exposures and placed it beside the MaNGA DR17 cube \citep{2022ApJS..259...35A} over the same sky area. After a rotation of $180\deg$ and registration by cross-correlation, the H$\alpha$ maps show the same knots. The H$\alpha$ profiles at matched positions have the same shape, and the SMI-300 line is broader, in line with its lower resolving power. A quantitative comparison of fluxes and kinematics is the subject of a separate paper on SMI-300 science verification.
 
-\section{Text}
-Sometimes you just need to have different styles of fonts.  \emph{Sometimes you just need to have different styles of fonts.} \textbf{Sometimes you just need to have different styles of fonts.}
+\section{Documentation and Status}
 
-Sometimes you just need to have different sizes of fonts.  {\small Sometimes you just need to have different sizes of fonts.} {\footnotesize Sometimes you just need to have different sizes of fonts.}  It would be very rare to require larger fonts within an ASP volume.
+The Help tab of the interface has 35 pages. They cover the eight tabs, two dialogs, seven tuner windows, fifteen configuration sections, the command line and the product files. The lists of 212 parameters and 204 interface controls are generated from the code, and a completeness check lists any without a description. A 58-page beginner's guide walks through a first reduction, with window captures from the running code.
 
-Do \emph{not} reduce the size of the main text font to try to squeeze more content into the paper. It will be restored by the editors and the paper will be rejected as too long.
+FIBRA has about 20\,000 lines of Python and depends on NumPy \citep{2020Natur.585..357H}, SciPy \citep{2020NatMe..17..261V}, Astropy \citep{2022ApJ...935..167A}, PyYAML and Matplotlib \citep{2007CSE.....9...90H}. The University of Hawai`i has cleared FIBRA for public release, and a release with a DOI and continuous integration is planned. Further fiber IFUs would enter as instrument descriptions.
 
-\section{Math}
-Sometimes authors include formulas inside the main text which should always be enclosed within \$ signs.  Look at the Pythagorean Formula $a^2 + b^2 = c^2$.
+\acknowledgements Based on observations made with the Southern African Large Telescope (SALT). This work uses data from SDSS-IV MaNGA DR17.
 
-Sometimes authors include formulas on their own lines.  This example uses the \verb"displaymath" environment which does not include an equation number.  To include an equation number, use the \verb"equation" environment.
-\begin{displaymath}
-c = \sqrt{a^2 + b^2} \qquad \textrm{Pythagorean Theorem}
-\end{displaymath}
-
-\section{Lists}
-\label{ex_lists}
-There are a lot of ways to make lists including itemized lists with bullets, for which you use  (\verb"\begin{itemize}"), numbered lists (\verb"\begin{enumerate}"), and description lists (\verb"\begin{description}").  This is an example of an itemized list.
-
-\subsection{Itemized Lists}
-Here is an itemized list:
-\begin{itemize}
-\item Item 1
-\item Item 2
-\end{itemize}
-
-
-\section{Table}
-Here is an example table that has three colums with various justification and row spacing.
-
-\begin{table}[!ht]
-\caption{Tables in \LaTeXe}
-\smallskip
-\begin{center}
-{\small
-\begin{tabular}{llc}  % l = left, c = centered
-\tableline
-\noalign{\smallskip}
-First Column & Second Column & Third Column:\\
-\noalign{\smallskip}
-\tableline
-\noalign{\smallskip}
-First Row, First Column & First Row, Second Column & First Row, Third Column \\
-Second Row, First Column & Second Row, Second Column & Second Row, Third Column \\
-Third Row, First Column & Third Row, Second Column & Third Row, Third Column \\
-\noalign{\smallskip}
-\tableline % Sometimes you just need a line between table rows
-\noalign{\smallskip}
-Fourth Row, First Column & ~ & Fourth Row, Third Column \\ % Sometimes you have empty cells
-\noalign{\smallskip} % Sometimes you just need space between table rows
-Fifth Row First Column & Fifth Row, Second Column & Fifth Row, Third Column\\ % No \\ if the last row
-\noalign{\smallskip}
-\tableline\
-\end{tabular}
-}
-\end{center}
-\end{table}
-\noindent These tables can get a little messy, but this format is the most common.
-
-\section{Images}
-For some figures, see Figures \ref{ex_fig1}- \ref{ex_fig3}.
-
-These figures have been converted to the `png' image format.  Notice
-that the references to the figures do not need to include the file
-extension and that the pdfLaTeX compiler recognizes the non-`eps'
-image files.
-
- 
-\articlefigure[width=0.65\textwidth]{example.jpg}{ex_fig1}{Welcome to 1365.  Size adjusted to be a little smaller than full.}
-% It is possible to reduce the size of a figure among other changes (see the instructions).  Here is an example:
-% \articlefigure[width=.5\textwidth]{example_image}{ex_fig1_reduced}{Welcome to 1953 a little smaller.}
-
-\articlefiguretwo{example}{example}{ex_fig2}{Now there are two of them.  \emph{Left:} An image from long ago.  \emph{Right:} The same exact thing.}
-% There is a figure command allowing for three figures:
-% \articlefigurethree{example.eps}{example.eps}{example.eps}{ex_fig1_triple}{Now there are three of them.}
-
-\articlefigurefour{example}{example}{example}{example}{ex_fig3}{Now four of them?}
-
-\clearpage % To force this stuff to happen by this point in the text, otherwise these will probably end up after the references.
-
-There are also the landscape versions \verb"\articlelandscapefigure" and \\
-\verb"\articlelandscapefiguretwo" which are further described in the instructions.
-
-\section{References}
-References must be provided in BibTeX format, in a .bib file, and should usually be referenced using \verb"\citet" or \verb"\citep". The file example.bib supplied with this template is taken from an ADASS 2015 paper, and includes references to previous ADASS proceedings 
-\citep[such as][]{1999ASPC..172..487P} and to papers in what was then the current 2015 proceedings (e.g.\ \citet{O11-4_adassxxv}). Note that the `TBD' entries that appear for papers in the current proceedings will be dealt with by the ADASS editors when the final volume is produced. The example .bib file has a large number of references unused by this template file; such unused references have been left in as an example, but should be removed before a paper is submitted.
-
-\section{Conference Photographs}
-
-At the end of this template you may find a commented line with the bookpartphoto where the editors could decided to add a conference photo,
-might there be enough room at the end of your paper. Leave this comment in, do not supply your own photos in this paper but contact the editors
-if you have some interesting shots.
-
-\acknowledgements The ASP would like to thank the dedicated researchers who are publishing with the ASP.  It will make things a lot easier if you keep this text on the same line as the \verb"\acknowledgements" command. Place it just before the bibliography. It's optional of course.
-
-
-\bibliography{C803}  % For BibTex
+\bibliography{C803}
 
 % if we have space left, we might add a conference photograph here. Leave commented for now.
 % \bookpartphoto[width=1.0\textwidth]{foobar.eps}{FooBar Photo (Photo: Any Photographer)}
