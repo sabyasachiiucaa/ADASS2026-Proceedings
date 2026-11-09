@@ -2,6 +2,6 @@
 P = C803
 V = 1
 A = Chattopadhyay
-E = you@example.edu
+E = sabya@hawaii.edu
 # your figures, named C803_f1.eps, C803_f2.png, ...
 FIGS = $(filter-out C803_inc.tex,$(wildcard C803_*))
